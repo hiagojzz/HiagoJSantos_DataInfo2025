@@ -1,0 +1,111 @@
+-- Base de Dados: SQL Server
+-- Script de Criação e Manipulação de Tabelas e Importação de Dados
+
+/* =============================================
+   Criação das Tabelas
+============================================= */
+
+-- Tabela de Provas
+CREATE TABLE PROVAS (
+    COD_PROVA INTEGER NOT NULL,            -- Código identificador da prova
+    NOM_PROVA VARCHAR(30) NOT NULL,        -- Nome da prova
+    TIP_PROVA VARCHAR(1),                  -- Tipo da prova (+ ou -)
+    CONSTRAINT PK_PROVAS PRIMARY KEY (COD_PROVA)
+);
+
+-- Tabela de Cidades
+CREATE TABLE CIDADES (
+    COD_CIDADE INTEGER NOT NULL,           -- Código identificador da cidade
+    NOM_CIDADE VARCHAR(20),                -- Nome da cidade
+    CONSTRAINT PK_CIDADES PRIMARY KEY (COD_CIDADE)
+);
+
+-- Tabela de Marcas
+CREATE TABLE MARCAS (
+    COD_ATLETA INTEGER NOT NULL,           -- Código do atleta
+    NOM_ATLETA VARCHAR(40),                -- Nome do atleta
+    COD_CIDADE INTEGER,                    -- Código da cidade
+    COD_PROVA INTEGER,                     -- Código da prova
+    MARCA NUMERIC(8, 4)                    -- Resultado ou marca alcançada
+);
+
+/* =============================================
+   Importação de Arquivos Texto
+   Etapa 1: Criação de Tabelas Auxiliares
+============================================= */
+
+-- Tabela Auxiliar para Provas
+CREATE TABLE PROVAS_BULK (
+    PROVA VARCHAR(50)                      -- Dados da prova no formato bruto
+);
+
+-- Tabela Auxiliar para Cidades
+CREATE TABLE CIDADES_BULK (
+    CIDADE VARCHAR(50)                     -- Dados da cidade no formato bruto
+);
+
+-- Tabela Auxiliar para Marcas
+CREATE TABLE MARCAS_BULK (
+    MARCA VARCHAR(100)                     -- Dados das marcas no formato bruto
+);
+
+/* =============================================
+   Etapa 2: Importação de Dados
+============================================= */
+
+-- Importação para a tabela auxiliar de Provas
+BULK INSERT PROVAS_BULK
+FROM 'C:\Source\HiagoJSantos_DataInfo_2025\PROVAS.TXT'
+WITH (CODEPAGE = 'ACP');
+
+-- Importação para a tabela auxiliar de Cidades
+BULK INSERT CIDADES_BULK
+FROM 'C:\Source\HiagoJSantos_DataInfo_2025\CIDADES.TXT'
+WITH (CODEPAGE = 'ACP');
+
+-- Importação para a tabela auxiliar de Marcas
+BULK INSERT MARCAS_BULK
+FROM 'C:\Source\HiagoJSantos_DataInfo_2025\MARCAS.TXT'
+WITH (CODEPAGE = 'ACP');
+
+/* =============================================
+   Etapa 3: Processamento e Inserção de Dados
+============================================= */
+
+-- Processamento e inserção na tabela PROVAS
+INSERT INTO PROVAS (COD_PROVA, NOM_PROVA, TIP_PROVA)
+SELECT 
+    SUBSTRING(PROVA, 1, 3) AS COD_PROVA,
+    TRIM(SUBSTRING(PROVA, 4, 30)) AS NOM_PROVA,
+    SUBSTRING(PROVA, 34, 1) AS TIP_PROVA
+FROM PROVAS_BULK;
+
+-- Processamento e inserção na tabela CIDADES
+INSERT INTO CIDADES (COD_CIDADE, NOM_CIDADE)
+SELECT 
+    SUBSTRING(CIDADE, 1, 2) AS COD_CIDADE,
+    TRIM(SUBSTRING(CIDADE, 3, 30)) AS NOM_CIDADE
+FROM CIDADES_BULK;
+
+-- Processamento e inserção na tabela MARCAS
+INSERT INTO MARCAS (COD_ATLETA, NOM_ATLETA, COD_CIDADE, COD_PROVA, MARCA)
+SELECT 
+    SUBSTRING(MARCA, 1, 5) AS COD_ATLETA,
+    TRIM(SUBSTRING(MARCA, 6, 40)) AS NOM_ATLETA,
+    SUBSTRING(MARCA, 46, 2) AS COD_CIDADE,
+    SUBSTRING(MARCA, 48, 3) AS COD_PROVA,
+    CAST(REPLACE(SUBSTRING(MARCA, 51, 10), ',', '.') AS NUMERIC(8, 4)) AS MARCA
+FROM MARCAS_BULK;
+
+/* =============================================
+   Criação da Tabela de Classificação
+============================================= */
+
+CREATE TABLE CLASS_PROVA (
+    COD_PROVA INTEGER,                     -- Código da prova
+    COD_ATLETA INTEGER,                    -- Código do atleta
+    NOM_ATLETA VARCHAR(40),                -- Nome do atleta
+    COD_CIDADE INTEGER,                    -- Código da cidade
+    MARCA NUMERIC(8, 4),                   -- Resultado ou marca alcançada
+    POSICAO INTEGER                        -- Posição final
+);

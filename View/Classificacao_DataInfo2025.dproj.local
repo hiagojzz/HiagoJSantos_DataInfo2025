@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2024/05/16 10:06:32.000.749,=C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2024/05/16 10:07:35.000.386,C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.dfm=C:\Delphi_DataInfo\View\uFrmClassificacao.dfm</Transaction>
+    <Transaction>2024/05/16 10:07:35.000.386,C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Unit1.pas=C:\Delphi_DataInfo\View\uFrmClassificacao.pas</Transaction>
+    <Transaction>2024/05/16 10:07:47.000.538,C:\Users\marce\OneDrive\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Delphi_DataInfo\View\Proj_DataInfo.dproj</Transaction>
+    <Transaction>2024/05/16 10:08:56.000.106,=C:\Delphi_DataInfo\Dao\udmConexao.pas</Transaction>
+    <Transaction>2025/01/26 22:20:00.000.084,=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:20:43.000.094,=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:20:56.000.074,C:\Source\Delphi_DataInfo\Dao\ConexaoSQL.pas=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:21:14.000.151,=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:21:36.000.977,C:\Source\Delphi_DataInfo\Dao\ConexaoSQL.pas=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:21:36.000.977,C:\Source\Delphi_DataInfo\Dao\ConexaoSQL.dfm=C:\Source\Delphi_DataInfo\View\Unit1.dfm</Transaction>
+    <Transaction>2025/01/26 22:21:48.000.755,C:\Source\Delphi_DataInfo\Dao\ConexaoSQL.pas=</Transaction>
+    <Transaction>2025/01/26 22:21:52.000.848,=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:22:55.000.177,=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/26 22:23:03.000.187,C:\Source\Delphi_DataInfo\Dao\ConexaoSQL.dfm=C:\Source\Delphi_DataInfo\View\Unit1.dfm</Transaction>
+    <Transaction>2025/01/26 22:23:03.000.187,C:\Source\Delphi_DataInfo\Dao\ConexaoSQL.pas=C:\Source\Delphi_DataInfo\View\Unit1.pas</Transaction>
+    <Transaction>2025/01/27 01:45:38.000.993,C:\Source\Delphi_DataInfo\Dao\udmConexao.pas=</Transaction>
+    <Transaction>2025/01/27 16:23:45.000.094,C:\Source\HiagoJSantos_DataInfo_2025\View\Classificacao_DataInfo2025.dproj=C:\Source\HiagoJSantos_DataInfo_2025\View\Proj_DataInfo.dproj</Transaction>
+  </Transactions>
+</BorlandProject>
